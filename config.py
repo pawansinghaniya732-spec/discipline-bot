@@ -1,1 +1,6 @@
-TELEGRAM_BOT_TOKEN = "8533398126:AAFvi24VaVDbcAz_OVOHwqA4bkKJhOkHRDA"
+import os
+
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+if not TELEGRAM_BOT_TOKEN:
+    raise RuntimeError("TELEGRAM_BOT_TOKEN not set")
