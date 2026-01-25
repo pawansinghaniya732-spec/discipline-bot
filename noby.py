@@ -8,10 +8,16 @@ scope = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-creds = Credentials.from_service_account_file(
-    r"C:\Users\pawan\OneDrive\Desktop\discipline_system\credentials.json",
+import os, json
+from google.oauth2.service_account import Credentials
+
+creds_dict = json.loads(os.getenv("GOOGLE_CREDENTIALS_JSON"))
+
+creds = Credentials.from_service_account_info(
+    creds_dict,
     scopes=scope
 )
+
 
 client = gspread.authorize(creds)
 print("Google Sheets Connected Successfully!")
